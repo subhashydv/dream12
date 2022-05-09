@@ -11,6 +11,17 @@ const generateData = function (name) {
   }
 };
 
-list = ['Chetak', 'Lilly', 'Ranger'];
-data = JSON.stringify(list.map(generateData));
-fs.writeFileSync('./horseData.json', data, 'utf8');
+const data = [[{
+  "gameName": "Dream12",
+  "description": "Horse Race betting",
+  "info": "play at your own risk",
+  "welcomeMsg": "Type the betting Horse name on terminal",
+  "lostMsg": "Oops! better luck next time",
+  "winMsg": "Congratulations! You Won...",
+  "winStatus": false,
+  "played": false
+}]];
+
+const list = ['Chetak', 'Lilly', 'Ranger'];
+data.push(list.map(generateData))
+fs.writeFileSync('./horseData.json', JSON.stringify(data), 'utf8');

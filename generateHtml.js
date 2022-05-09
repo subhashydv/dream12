@@ -1,4 +1,5 @@
 const fs = require("fs");
+const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
 
 const generateTag = function (tag, description, tagClass) {
   const classTag = tagClass ? ' class="' + tagClass + '"' : '';
@@ -32,15 +33,24 @@ const generateHead = function (title, href, rel) {
   return generateTag('head', headContent);
 };
 
+const getMsg = function (messages) {
+  if (messages.played === false) {
+    return messages.welcomeMsg;
+  }
+  return messages.winStatus ? messages.winMsg : messages.lostMsg;
+};
+
 const generateBody = function (content) {
-  return generateTag('body', generateTable(content))
+  const table = generateTable(content[1]);
+  const msg = generateTag('div', getMsg(content[0][0]), 'winStatus');
+  return generateTag('body', table + msg)
 };
 
 const generateHtml = function (content, title) {
   return generateTag('html', generateHead(title) + generateBody(content));
 };
 
-const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
-
 output = generateHtml(content, 'Dream12');
-fs.writeFileSync('horse.html', output, 'utf8');
+fs.writeFileSync('index.html', output, 'utf8');
+
+exports.generateHtml = generateHtml;
