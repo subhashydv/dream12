@@ -1,16 +1,16 @@
 [
   {
-    "name": "chetak",
+    "name": "Chetak",
     "racesRan": 50,
     "racesWon": 30
   },
   {
-    "name": "ranger",
+    "name": "Ranger",
     "racesRan": 30,
     "racesWon": 15
   },
   {
-    "name": "lilly",
+    "name": "Lilly",
     "racesRan": 10,
     "racesWon": 8
   }
