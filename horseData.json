@@ -1,17 +1,1 @@
-[
-  {
-    "name": "Chetak",
-    "racesRan": 50,
-    "racesWon": 30
-  },
-  {
-    "name": "Ranger",
-    "racesRan": 30,
-    "racesWon": 15
-  },
-  {
-    "name": "Lilly",
-    "racesRan": 10,
-    "racesWon": 8
-  }
-]
+[{"name":"Chetak","racesRan":27,"racesWon":22},{"name":"Lilly","racesRan":55,"racesWon":45},{"name":"Ranger","racesRan":65,"racesWon":19}]

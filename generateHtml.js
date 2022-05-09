@@ -40,7 +40,6 @@ const generateHtml = function (content, title) {
   return generateTag('html', generateHead(title) + generateBody(content));
 };
 
-
 const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
 
 output = generateHtml(content, 'Dream12');
