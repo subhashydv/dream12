@@ -1,6 +1,8 @@
 const fs = require('fs');
 const { generateHtml } = require('./generateHtml.js');
-const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
+const content = JSON.parse(fs.readFileSync('../data/horseData.json', 'utf8'));
+
+const copyObject = (object) => JSON.parse(JSON.stringify(object));
 
 const probabilityToWin = function (horsesData) {
   return horsesData.map(({ racesWon, racesRan }) => racesWon / racesRan);
@@ -20,7 +22,7 @@ const chanceToWin = function (horsesData) {
   const relativeProbability = percentOfWinning(probability);
 
   return horsesData.map((horse, index) => {
-    cpHorse = JSON.parse(JSON.stringify(horse));
+    const cpHorse = copyObject(horse);
     cpHorse.chance = relativeProbability[index];
     return cpHorse;
   });
@@ -28,27 +30,19 @@ const chanceToWin = function (horsesData) {
 
 const whoWon = function (horsesData) {
   return horsesData.reduce((horse1, horse2) => {
-    return horse1.chance > horse2.chance ? horse1 : horse2
+    return horse1.chance > horse2.chance ? horse1 : horse2;
   });
 };
 
-const spread = function ({ messages, gameStatus, horseData }) {
-  return { messages, gameStatus, horseData };
-};
-
 const main = function (content, battedHorse) {
-  const updatedData = chanceToWin(content.horseData);
-  const winner = whoWon(updatedData);
-  content.gameStatus.played = true;
+  const updatedData = copyObject(content);
+  updatedData.horseData = chanceToWin(content.horseData);
 
-  if (winner.name === battedHorse) {
-    content.gameStatus.playerWon = true;
-  }
+  const winner = whoWon(updatedData.horseData);
+  updatedData.gameStatus.played = true;
+  updatedData.gameStatus.playerWon = winner.name === battedHorse;
 
-
-  return generateHtml(data, 'Dream12');
+  return generateHtml(updatedData, 'Dream12');
 };
 
-// console.log(chanceToWin(horsesData[1]));
-// fs.writeFileSync('index.html', main(content, process.argv[2]), 'utf8');
-// console.log(main(horsesData, "Chetak"));
+fs.writeFileSync('../index.html', main(content, process.argv[2]), 'utf8');

@@ -1,5 +1,5 @@
-const fs = require("fs");
-const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
+const fs = require('fs');
+const content = JSON.parse(fs.readFileSync('../data/horseData.json', 'utf8'));
 
 const generateTag = function (tag, description, tagClass) {
   const classTag = tagClass ? ' class="' + tagClass + '"' : '';
@@ -55,7 +55,7 @@ const article = function (content) {
   const table = generateTable(content.horseData);
   const warning = generateTag('div', content.messages.warn, 'warning');
   return generateTag('article', header + table + warning);
-}
+};
 
 const wrapWithMain = function (content) {
   const mainContent = header(content) + article(content) + footer(content);
@@ -64,14 +64,14 @@ const wrapWithMain = function (content) {
 
 const wrapWithBody = function (content) {
   return generateTag('body', wrapWithMain(content));
-}
+};
 
 const generateHtml = function (content, title) {
   return generateTag('html', generateHead(title) + wrapWithBody(content));
 };
 
-output = generateHtml(content, 'Dream12');
+const output = generateHtml(content, 'Dream12');
 // console.log(output);
-fs.writeFileSync('index.html', output, 'utf8');
+fs.writeFileSync('../index.html', output, 'utf8');
 
 exports.generateHtml = generateHtml;
