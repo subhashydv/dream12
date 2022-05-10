@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { generateHtml } = require('./generateHtml.js');
-const horsesData = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
+const content = JSON.parse(fs.readFileSync('./horseData.json', 'utf8'));
 
 const probabilityToWin = function (horsesData) {
   return horsesData.map(({ racesWon, racesRan }) => racesWon / racesRan);
@@ -32,23 +32,23 @@ const whoWon = function (horsesData) {
   });
 };
 
-const main = function (horsesData, battedHorse) {
-  const data = [];
-  const updatedData = chanceToWin(horsesData[1]);
+const spread = function ({ messages, gameStatus, horseData }) {
+  return { messages, gameStatus, horseData };
+};
+
+const main = function (content, battedHorse) {
+  const updatedData = chanceToWin(content.horseData);
   const winner = whoWon(updatedData);
-  const messages = horsesData[0];
-  messages[0].played = true;
+  content.gameStatus.played = true;
 
   if (winner.name === battedHorse) {
-    messages[0].winStatus = true;
+    content.gameStatus.playerWon = true;
   }
 
-  data.push(messages);
-  data.push(updatedData)
-  // console.log(data);
+
   return generateHtml(data, 'Dream12');
 };
 
 // console.log(chanceToWin(horsesData[1]));
-fs.writeFileSync('index.html', main(horsesData, process.argv[2]), 'utf8');
+// fs.writeFileSync('index.html', main(content, process.argv[2]), 'utf8');
 // console.log(main(horsesData, "Chetak"));

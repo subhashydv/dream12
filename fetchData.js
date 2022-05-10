@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const randomInt = (limit) => Math.ceil(Math.random() * limit);
 
-const generateData = function (name) {
+const horseInfo = function (name) {
   const ranRaces = randomInt(100);
   return {
     "name": name,
@@ -11,17 +11,29 @@ const generateData = function (name) {
   }
 };
 
-const data = [[{
+const messages = {
   "gameName": "Dream12",
   "description": "Horse Race betting",
-  "info": "play at your own risk",
+  "aboutGame": "Dream12 Super Smash",
+  "warn": "*play at your own risk",
   "welcomeMsg": "Type the betting Horse name on terminal",
   "lostMsg": "Oops! better luck next time",
   "winMsg": "Congratulations! You Won...",
-  "winStatus": false,
+};
+
+const gameStatus = {
+  "playerWon": false,
   "played": false
-}]];
+};
+
+const horsesInfo = (list) => list.map(horseInfo);
+
+const createObject = function (horseData) {
+  return { messages, gameStatus, horseData };
+};
 
 const list = ['Chetak', 'Lilly', 'Ranger'];
-data.push(list.map(generateData))
+const horsesData = horsesInfo(list);
+const data = createObject(horsesData);
+
 fs.writeFileSync('./horseData.json', JSON.stringify(data), 'utf8');
