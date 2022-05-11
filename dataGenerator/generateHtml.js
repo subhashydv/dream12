@@ -6,20 +6,26 @@ const generateTag = function (tag, description, tagClass) {
   return '<' + tag + classTag + '>' + description + '</' + tag + '>';
 };
 
-const generateLink = (href = 'style.css', rel = 'stylesheet') => {
+const style = (href = 'style.css', rel = 'stylesheet') => {
   return '<link rel="' + rel + '" href=' + href + '>';
 };
 
+const link = function (content, href) {
+  return '<a href="' + href + '">' + content + '</a>';
+};
+
 const generateHead = function (title, href, rel) {
-  const headContent = generateTag('title', title) + generateLink(rel, href);
+  const headContent = generateTag('title', title) + style(rel, href);
   return generateTag('head', headContent);
 };
 
-const getMsg = function (messages, gameStatus) {
-  if (gameStatus.played === false) {
-    return messages.welcomeMsg;
-  }
-  return gameStatus.playerWon ? messages.winMsg : messages.lostMsg;
+const getMsg = function (content) {
+  const messages = content.messages;
+  return content.gameStatus.playerWon ? messages.winMsg : messages.lostMsg;
+};
+
+const footer = function (content) {
+  return generateTag('footer', getMsg(content), 'msg');
 };
 
 const generateRow = function (content) {
@@ -40,25 +46,32 @@ const generateTable = function (content) {
   return generateTag('table', table);
 };
 
+const navigation = function (content) {
+  const table = content.page.html ? '' : 'green';
+  const result = content.page.html ? 'green' : '';
+  const list1 = generateTag('li', link('Table', 'index.html'), table);
+  const list2 = generateTag('li', link('Result', 'result.html'), result);
+
+  return generateTag('nav', generateTag('ul', list1 + list2));
+};
+
 const header = function (content) {
   const h1 = generateTag('h1', content.messages.gameName);
   const h2 = generateTag('h2', content.messages.description);
   return generateTag('header', h1 + h2);
 };
 
-const footer = function (content) {
-  return generateTag('footer', getMsg(content.messages, content.gameStatus), 'msg');
-};
-
 const article = function (content) {
   const header = generateTag('header', content.messages.aboutGame);
+  const nav = navigation(content);
   const table = generateTable(content.horseData);
   const warning = generateTag('div', content.messages.warn, 'warning');
-  return generateTag('article', header + table + warning);
+  return generateTag('article', header + nav + table + warning);
 };
 
 const wrapWithMain = function (content) {
-  const mainContent = header(content) + article(content) + footer(content);
+  let mainContent = header(content) + article(content);
+  mainContent += content.page.html ? footer(content) : '';
   return generateTag('main', mainContent);
 };
 
@@ -71,7 +84,6 @@ const generateHtml = function (content, title) {
 };
 
 const output = generateHtml(content, 'Dream12');
-// console.log(output);
 fs.writeFileSync('../index.html', output, 'utf8');
 
 exports.generateHtml = generateHtml;

@@ -34,6 +34,10 @@ const whoWon = function (horsesData) {
   });
 };
 
+const writeDataInHtml = function (fileName, data) {
+  fs.writeFileSync(fileName, generateHtml(data, 'Dream12'), 'utf8');
+};
+
 const main = function (content, battedHorse) {
   const updatedData = copyObject(content);
   updatedData.horseData = chanceToWin(content.horseData);
@@ -42,7 +46,11 @@ const main = function (content, battedHorse) {
   updatedData.gameStatus.played = true;
   updatedData.gameStatus.playerWon = winner.name === battedHorse;
 
-  return generateHtml(updatedData, 'Dream12');
+  writeDataInHtml('../index.html', updatedData);
+  winner.status = 'Winner';
+  updatedData.page.html = true;
+  updatedData.horseData = [winner];
+  writeDataInHtml('../result.html', updatedData);
 };
 
-fs.writeFileSync('../index.html', main(content, process.argv[2]), 'utf8');
+main(content, process.argv[2]);

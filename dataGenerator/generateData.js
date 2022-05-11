@@ -16,7 +16,6 @@ const messages = {
   'description': 'Horse Race betting',
   'aboutGame': 'Dream12 Super Smash',
   'warn': '*play at your own risk',
-  'welcomeMsg': 'Type the betting Horse name on terminal',
   'lostMsg': 'Oops! better luck next time',
   'winMsg': 'Congratulations! You Won...',
 };
@@ -26,10 +25,14 @@ const gameStatus = {
   'played': false
 };
 
+const page = {
+  'html': false
+};
+
 const horsesInfo = (list) => list.map(horseInfo);
 
 const createObject = function (horseData) {
-  return { messages, gameStatus, horseData };
+  return { messages, gameStatus, page, horseData };
 };
 
 const list = ['Chetak', 'Lilly', 'Ranger', 'Alex', 'Tucker', 'Gypsy', 'Charlie', 'Lucy', 'Jasper', 'Bruno'];
