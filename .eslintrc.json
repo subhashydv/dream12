@@ -104,6 +104,15 @@
         "no-magic-numbers": "off",
         "max-statements": "off"
       }
+    },
+    {
+      "files": [
+        "dataGenerator/*.js"
+      ],
+      "rules": {
+        "max-len": "warn",
+        "no-magic-numbers": "off"
+      }
     }
   ]
 }

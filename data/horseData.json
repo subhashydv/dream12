@@ -1,1 +1,69 @@
-{"messages":{"gameName":"Dream12","description":"Horse Race betting","aboutGame":"Dream12 Super Smash","warn":"*play at your own risk","lostMsg":"Oops! better luck next time","winMsg":"Congratulations! You Won..."},"gameStatus":{"playerWon":false,"played":false},"page":{"html":false},"horseData":[{"name":"Chetak","racesRan":65,"racesWon":34},{"name":"Lilly","racesRan":81,"racesWon":8},{"name":"Ranger","racesRan":30,"racesWon":26},{"name":"Alex","racesRan":69,"racesWon":4},{"name":"Tucker","racesRan":18,"racesWon":14},{"name":"Gypsy","racesRan":77,"racesWon":26},{"name":"Charlie","racesRan":57,"racesWon":21},{"name":"Lucy","racesRan":64,"racesWon":35},{"name":"Jasper","racesRan":70,"racesWon":60},{"name":"Bruno","racesRan":24,"racesWon":4}]}
+{
+  "messages": {
+    "gameName": "Dream12",
+    "description": "Horse Race betting",
+    "aboutGame": "Dream12 Super Smash",
+    "warn": "*play at your own risk",
+    "lostMsg": "Oops! better luck next time",
+    "winMsg": "Congratulations! You Won..."
+  },
+  "gameStatus": {
+    "playerWon": false,
+    "played": false
+  },
+  "page": {
+    "html": false
+  },
+  "horseData": [
+    {
+      "name": "Chetak",
+      "racesRan": 27,
+      "racesWon": 1
+    },
+    {
+      "name": "Lilly",
+      "racesRan": 77,
+      "racesWon": 27
+    },
+    {
+      "name": "Ranger",
+      "racesRan": 39,
+      "racesWon": 8
+    },
+    {
+      "name": "Alex",
+      "racesRan": 6,
+      "racesWon": 4
+    },
+    {
+      "name": "Tucker",
+      "racesRan": 94,
+      "racesWon": 26
+    },
+    {
+      "name": "Gypsy",
+      "racesRan": 74,
+      "racesWon": 25
+    },
+    {
+      "name": "Charlie",
+      "racesRan": 50,
+      "racesWon": 14
+    },
+    {
+      "name": "Lucy",
+      "racesRan": 100,
+      "racesWon": 69
+    },
+    {
+      "name": "Jasper",
+      "racesRan": 8,
+      "racesWon": 5
+    },
+    {
+      "name": "Bruno",
+      "racesRan": 3,
+      "racesWon": 1
+    }
+  ]
+}

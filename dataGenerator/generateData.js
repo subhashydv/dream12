@@ -5,9 +5,9 @@ const randomInt = (limit) => Math.ceil(Math.random() * limit);
 const horseInfo = function (name) {
   const ranRaces = randomInt(100);
   return {
-    'name': name,
-    'racesRan': ranRaces,
-    'racesWon': randomInt(ranRaces - 1)
+    name: name,
+    racesRan: ranRaces,
+    racesWon: randomInt(ranRaces - 1)
   };
 };
 
