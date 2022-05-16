@@ -7,7 +7,7 @@ const horseInfo = function (name) {
   return {
     'name': name,
     'racesRan': ranRaces,
-    'racesWon': Math.min(ranRaces, randomInt(randomInt(70)))
+    'racesWon': randomInt(ranRaces - 1)
   };
 };
 
