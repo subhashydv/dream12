@@ -12,21 +12,21 @@ const horseInfo = function (name) {
 };
 
 const messages = {
-  'gameName': 'Dream12',
-  'description': 'Horse Race betting',
-  'aboutGame': 'Dream12 Super Smash',
-  'warn': '*play at your own risk',
-  'lostMsg': 'Oops! better luck next time',
-  'winMsg': 'Congratulations! You Won...',
+  gameName: 'Dream12',
+  description: 'Horse Race betting',
+  aboutGame: 'Dream12 Super Smash',
+  warn: '*play at your own risk',
+  lostMsg: 'Oops! better luck next time',
+  winMsg: 'Congratulations! You Won...',
 };
 
 const gameStatus = {
-  'playerWon': false,
-  'played': false
+  playerWon: false,
+  played: false
 };
 
 const page = {
-  'html': false
+  html: false
 };
 
 const horsesInfo = (list) => list.map(horseInfo);

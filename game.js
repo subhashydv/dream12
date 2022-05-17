@@ -2,7 +2,6 @@ const fs = require('fs');
 const content = JSON.parse(fs.readFileSync('./data/horseData.json', 'utf8'));
 const { generateHtml } = require('./dataGenerator/generateHtml.js');
 const { chanceToWin } = require('./dataGenerator/calculateStatistics.js');
-const copyObject = (object) => JSON.parse(JSON.stringify(object));
 
 const writeDataInHtml = function (fileName, data) {
   fs.writeFileSync(fileName, generateHtml(data, 'Dream12'), 'utf8');
@@ -15,18 +14,17 @@ const whoWon = function (horsesData) {
 };
 
 const main = function (content, battedHorse) {
-  const updatedData = copyObject(content);
-  updatedData.horseData = chanceToWin(content.horseData);
+  content.horseData = chanceToWin(content.horseData);
 
-  const winner = whoWon(updatedData.horseData);
-  updatedData.gameStatus.played = true;
-  updatedData.gameStatus.playerWon = winner.name === battedHorse;
+  const winner = whoWon(content.horseData);
+  content.gameStatus.played = true;
+  content.gameStatus.playerWon = winner.name === battedHorse;
 
-  writeDataInHtml('./html/index.html', updatedData);
+  writeDataInHtml('./html/index.html', content);
   winner.status = 'Winner';
-  updatedData.page.html = true;
-  updatedData.horseData = [winner];
-  writeDataInHtml('./html/result.html', updatedData);
+  content.page.html = true;
+  content.horseData = [winner];
+  writeDataInHtml('./html/result.html', content);
 };
 
 main(content, process.argv[2]);

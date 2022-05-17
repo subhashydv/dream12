@@ -1,5 +1,3 @@
-const copyObject = (object) => JSON.parse(JSON.stringify(object));
-
 const probabilityToWin = function (horsesData) {
   return horsesData.map(({ racesWon, racesRan }) => racesWon / racesRan);
 };
@@ -18,9 +16,8 @@ const chanceToWin = function (horsesData) {
   const relativeProbability = percentOfWinning(probability);
 
   return horsesData.map((horse, index) => {
-    const cpHorse = copyObject(horse);
-    cpHorse.chance = relativeProbability[index];
-    return cpHorse;
+    horse.chance = relativeProbability[index];
+    return horse;
   });
 };
 
