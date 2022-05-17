@@ -1,7 +1,3 @@
-const fs = require('fs');
-const { generateHtml } = require('./generateHtml.js');
-const content = JSON.parse(fs.readFileSync('../data/horseData.json', 'utf8'));
-
 const copyObject = (object) => JSON.parse(JSON.stringify(object));
 
 const probabilityToWin = function (horsesData) {
@@ -28,29 +24,4 @@ const chanceToWin = function (horsesData) {
   });
 };
 
-const whoWon = function (horsesData) {
-  return horsesData.reduce((horse1, horse2) => {
-    return horse1.chance > horse2.chance ? horse1 : horse2;
-  });
-};
-
-const writeDataInHtml = function (fileName, data) {
-  fs.writeFileSync(fileName, generateHtml(data, 'Dream12'), 'utf8');
-};
-
-const main = function (content, battedHorse) {
-  const updatedData = copyObject(content);
-  updatedData.horseData = chanceToWin(content.horseData);
-
-  const winner = whoWon(updatedData.horseData);
-  updatedData.gameStatus.played = true;
-  updatedData.gameStatus.playerWon = winner.name === battedHorse;
-
-  writeDataInHtml('../index.html', updatedData);
-  winner.status = 'Winner';
-  updatedData.page.html = true;
-  updatedData.horseData = [winner];
-  writeDataInHtml('../result.html', updatedData);
-};
-
-main(content, process.argv[2]);
+exports.chanceToWin = chanceToWin;

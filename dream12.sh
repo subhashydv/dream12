@@ -2,12 +2,12 @@
 
 cd dataGenerator/
 node generateData.js
-node generateHtml.js
-rm ../result.html
-open ../index.html
+cd ..
+node gameStarter.js
+rm ./html/result.html
+open ./html/index.html
 
 read -p "Whom do You want to bet : " userInput
 
-node calculateStatistics.js ${userInput}
-cd ..
-open index.html
+node game.js ${userInput}
+open ./html/index.html

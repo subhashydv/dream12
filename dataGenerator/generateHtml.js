@@ -1,6 +1,3 @@
-const fs = require('fs');
-const content = JSON.parse(fs.readFileSync('../data/horseData.json', 'utf8'));
-
 const generateTag = function (tag, description, tagClass) {
   const classTag = tagClass ? ' class="' + tagClass + '"' : '';
   return '<' + tag + classTag + '>' + description + '</' + tag + '>';
@@ -82,8 +79,5 @@ const wrapWithBody = function (content) {
 const generateHtml = function (content, title) {
   return generateTag('html', generateHead(title) + wrapWithBody(content));
 };
-
-const output = generateHtml(content, 'Dream12');
-fs.writeFileSync('../index.html', output, 'utf8');
 
 exports.generateHtml = generateHtml;
