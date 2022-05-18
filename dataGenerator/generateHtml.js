@@ -44,8 +44,8 @@ const generateTable = function (content) {
 };
 
 const navigation = function (content) {
-  const table = content.page.html ? '' : 'green';
-  const result = content.page.html ? 'green' : '';
+  const table = content.pageStatus.htmlGenerated ? '' : 'green';
+  const result = content.pageStatus.htmlGenerated ? 'green' : '';
   const list1 = generateTag('li', link('Table', 'index.html'), table);
   const list2 = generateTag('li', link('Result', 'result.html'), result);
 
@@ -68,7 +68,7 @@ const article = function (content) {
 
 const wrapWithMain = function (content) {
   let mainContent = header(content) + article(content);
-  mainContent += content.page.html ? footer(content) : '';
+  mainContent += content.pageStatus.htmlGenerated ? footer(content) : '';
   return generateTag('main', mainContent);
 };
 

@@ -22,7 +22,7 @@ const main = function (content, battedHorse) {
 
   writeDataInHtml('./html/index.html', content);
   winner.status = 'Winner';
-  content.page.html = true;
+  content.pageStatus.htmlGenerated = true;
   content.horseData = [winner];
   writeDataInHtml('./html/result.html', content);
 };
