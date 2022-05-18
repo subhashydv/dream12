@@ -2,6 +2,7 @@ const fs = require('fs');
 const { createObject } = require('./generateData');
 const { generateHtml } = require('./generateHtml.js');
 
+// eslint-disable-next-line max-len
 const list = ['Chetak', 'Lilly', 'Ranger', 'Alex', 'Tucker', 'Gypsy', 'Charlie', 'Lucy', 'Jasper', 'Bruno'];
 
 const content = createObject(list);

@@ -22,3 +22,5 @@ const chanceToWin = function (horsesData) {
 };
 
 exports.chanceToWin = chanceToWin;
+exports.probabilityToWin = probabilityToWin;
+exports.percentOfWinning = percentOfWinning;
