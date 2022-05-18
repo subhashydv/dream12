@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const messages = {
   gameName: 'Dream12',
   description: 'Horse Race betting',
@@ -31,12 +29,11 @@ const horseInfo = function (name) {
 
 const horsesInfo = (list) => list.map(horseInfo);
 
-const createObject = function (horseData) {
-  return { messages, gameStatus, pageStatus, horseData };
+const createObject = function (list) {
+  return {
+    messages, gameStatus, pageStatus,
+    'horseData': horsesInfo(list)
+  };
 };
 
-const list = ['Chetak', 'Lilly', 'Ranger', 'Alex', 'Tucker', 'Gypsy', 'Charlie', 'Lucy', 'Jasper', 'Bruno'];
-
-const data = createObject(horsesInfo(list));
-
-fs.writeFileSync('./data/horseData.json', JSON.stringify(data), 'utf8');
+exports.createObject = createObject;

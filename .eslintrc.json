@@ -107,8 +107,7 @@
     },
     {
       "files": [
-        "dataGenerator/*.js",
-        "game.js"
+        "src/*.js"
       ],
       "rules": {
         "max-len": "warn",
