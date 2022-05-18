@@ -3,7 +3,7 @@
 cd dataGenerator/
 node generateData.js
 cd ..
-node gameStarter.js
+node setUpGame.js
 rm ./html/result.html
 open ./html/index.html
 
