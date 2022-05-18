@@ -1,7 +1,7 @@
 const fs = require('fs');
 const content = JSON.parse(fs.readFileSync('./data/horseData.json', 'utf8'));
-const { generateHtml } = require('./dataGenerator/generateHtml.js');
-const { chanceToWin } = require('./dataGenerator/calculateStatistics.js');
+const { generateHtml } = require('./generateHtml.js');
+const { chanceToWin } = require('./calculateStatistics.js');
 
 const writeDataInHtml = function (fileName, data) {
   fs.writeFileSync(fileName, generateHtml(data, 'Dream12'), 'utf8');

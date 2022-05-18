@@ -39,4 +39,4 @@ const list = ['Chetak', 'Lilly', 'Ranger', 'Alex', 'Tucker', 'Gypsy', 'Charlie',
 
 const data = createObject(horsesInfo(list));
 
-fs.writeFileSync('../data/horseData.json', JSON.stringify(data), 'utf8');
+fs.writeFileSync('./data/horseData.json', JSON.stringify(data), 'utf8');

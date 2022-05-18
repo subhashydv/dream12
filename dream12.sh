@@ -1,13 +1,12 @@
 #! /bin/bash
 
-cd dataGenerator/
-node generateData.js
-cd ..
-node setUpGame.js
+node dataGenerator/generateData.js
+node dataGenerator/setUpGame.js
+
 rm ./html/result.html
 open ./html/index.html
 
 read -p "Whom do You want to bet : " userInput
 
-node game.js ${userInput}
+node dataGenerator/game.js ${userInput}
 open ./html/index.html
