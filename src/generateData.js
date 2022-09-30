@@ -37,3 +37,5 @@ const createObject = function (list) {
 };
 
 exports.createObject = createObject;
+exports.randomInt = randomInt;
+exports.horseInfo = horseInfo;
